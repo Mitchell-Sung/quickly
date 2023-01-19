@@ -4,8 +4,16 @@ import { ContainButton, InputField, TextButton, Loading } from 'components';
 import styles from 'styles/Signup.module.css';
 
 const Signup = () => {
-  const { canSubmit, user, valid, onHandle, onSubmit, onReset, loading } =
-    useSignup();
+  const {
+    canSubmit,
+    user,
+    valid,
+    onHandle,
+    onSubmit,
+    onReset,
+    loading,
+    onLink,
+  } = useSignup();
 
   if (loading) return <Loading />;
 
@@ -27,7 +35,7 @@ const Signup = () => {
         ))}
         <section className={styles.account}>
           <p>Do you have an account?</p>
-          <TextButton label='LOG IN' />
+          <TextButton label='LOG IN' onClick={onLink} />
         </section>
         <section className={styles.buttons}>
           <ContainButton

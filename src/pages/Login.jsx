@@ -7,8 +7,16 @@ import useLogin from 'hooks/useLogin';
 import styles from 'styles/Login.module.css';
 
 const Login = () => {
-  const { canLogin, login, valid, onHandle, onSubmit, onReset, loading } =
-    useLogin();
+  const {
+    canLogin,
+    login,
+    valid,
+    onHandle,
+    onSubmit,
+    onReset,
+    loading,
+    onLink,
+  } = useLogin();
 
   if (loading) return <Loading />;
 
@@ -30,7 +38,7 @@ const Login = () => {
         ))}
         <section className={styles.account}>
           <p>Don't have an account?</p>
-          <TextButton label='SIGN UP' />
+          <TextButton label='SIGN UP' onClick={onLink} />
         </section>
         <section className={styles.buttons}>
           <ContainButton

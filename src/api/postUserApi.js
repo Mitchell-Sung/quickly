@@ -1,9 +1,8 @@
-const createUserApi = async (method, user, url, jwtStr) => {
+const postUserApi = async (user, url) => {
   const options = {
-    method: method,
+    method: 'post',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
-      Authorization: 'Bearer ' + jwtStr,
     },
     body: JSON.stringify(user),
   };
@@ -18,4 +17,4 @@ const createUserApi = async (method, user, url, jwtStr) => {
   }
 };
 
-export default createUserApi;
+export default postUserApi;

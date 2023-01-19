@@ -10,5 +10,8 @@ export const API_CREATE_USER = '/auth/signup';
 export const API_LOGIN = '/auth/login';
 export const API_GET_USER = '/auth/user';
 
-export const POST = 'post';
-export const GET = 'get';
+/** Route Paths */
+export const ROUTE_LOGIN = '/login';
+export const ROUTE_SIGNUP = '/signup';
+export const ROUTE_NOT_FOUND = '*';
+export const ROUTE_MY_PROFILE = '/';

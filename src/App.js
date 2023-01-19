@@ -1,13 +1,7 @@
-import Login from 'pages/Login';
-import MyProfile from 'pages/MyProfile';
-import Signup from './pages/Signup';
+import RootRoute from 'routes/RootRoute';
 
 const App = () => {
-  return (
-    <main>
-      <MyProfile />
-    </main>
-  );
+  return <RootRoute />;
 };
 
 export default App;
