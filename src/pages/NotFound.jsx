@@ -1,4 +1,4 @@
-import styles from 'styles/Signup.module.css';
+import styles from 'styles/index.module.css';
 
 const NotFound = () => {
   return (

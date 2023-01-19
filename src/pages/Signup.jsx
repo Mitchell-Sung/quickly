@@ -1,7 +1,7 @@
 import useSignup from 'hooks/useSignup';
 import { signupData } from 'data/signupData';
 import { ContainButton, InputField, TextButton, Loading } from 'components';
-import styles from 'styles/Signup.module.css';
+import styles from 'styles/index.module.css';
 
 const Signup = () => {
   const {

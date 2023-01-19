@@ -1,4 +1,5 @@
 import TextField from '@mui/material/TextField';
+import { bool, string, func } from 'prop-types';
 
 const InputField = ({ name, type, label, value, err, msg, onChange }) => {
   return (
@@ -15,6 +16,16 @@ const InputField = ({ name, type, label, value, err, msg, onChange }) => {
       sx={{ width: '17.5rem' }}
     />
   );
+};
+
+InputField.propTypes = {
+  name: string,
+  type: string,
+  label: string,
+  value: string,
+  err: bool,
+  msg: string,
+  onChange: func,
 };
 
 export default InputField;

@@ -4,7 +4,7 @@ import InputField from 'components/InputField';
 import TextButton from 'components/TextButton';
 import { loginData } from 'data/loginData';
 import useLogin from 'hooks/useLogin';
-import styles from 'styles/Login.module.css';
+import styles from 'styles/index.module.css';
 
 const Login = () => {
   const {

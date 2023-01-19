@@ -1,4 +1,5 @@
 import TextField from '@mui/material/TextField';
+import { string } from 'prop-types';
 
 const InfoField = ({ label, value }) => {
   return (
@@ -12,6 +13,11 @@ const InfoField = ({ label, value }) => {
       sx={{ width: '17.5rem' }}
     />
   );
+};
+
+InfoField.propTypes = {
+  label: string,
+  value: string,
 };
 
 export default InfoField;

@@ -1,4 +1,4 @@
-import styles from 'styles/Signup.module.css';
+import styles from 'styles/index.module.css';
 import useMyProfile from 'hooks/useMyProfile';
 import { Loading, InfoField } from 'components';
 import { FIRST_NAME, LAST_NAME, EMAIL } from 'constants';
