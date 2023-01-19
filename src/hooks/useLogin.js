@@ -15,6 +15,7 @@ const useLogin = () => {
   const [valid, setValid] = useState(initValid);
   const [canLogin, setCanLogin] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({ success: true, message: '' });
 
   const onHandle = (e) => {
     const validated = validateUser(e.target.name, e.target.value);
@@ -23,13 +24,20 @@ const useLogin = () => {
   };
 
   const onSubmit = async () => {
-    setLoading(true);
-    const res = await postUserApi(login, API_LOGIN);
-    if (res.success) {
-      storeToken(res.token);
-      return navigate(ROUTE_MY_PROFILE);
+    try {
+      setLoading(true);
+      const res = await postUserApi(login, API_LOGIN);
+      if (res.success) {
+        storeToken(res.token);
+        return navigate(ROUTE_MY_PROFILE);
+      } else {
+        setError(res);
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const onReset = () => {
@@ -55,6 +63,7 @@ const useLogin = () => {
     onReset,
     loading,
     onLink,
+    error,
   };
 };
 

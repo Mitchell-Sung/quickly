@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { initUser, initValid } from 'data/signupData';
 import postUserApi from 'api/postUserApi';
-import { API_CREATE_USER } from 'constants';
 import validateUser from 'libs/validateUser';
 import checkSubmit from 'libs/checkSubmit';
-import { ROUTE_LOGIN } from 'constants';
+import { ROUTE_LOGIN, ROUTE_MY_PROFILE, API_CREATE_USER } from 'constants';
 import { useNavigate } from 'react-router-dom';
 import storeToken from 'libs/setToken';
-import { ROUTE_MY_PROFILE } from 'constants';
 
 const useSignup = () => {
   const navigate = useNavigate();
@@ -15,6 +13,7 @@ const useSignup = () => {
   const [valid, setValid] = useState(initValid);
   const [canSubmit, setCanSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({ success: true, message: '' });
 
   const onHandle = (e) => {
     const validated = validateUser(e.target.name, e.target.value);
@@ -26,8 +25,12 @@ const useSignup = () => {
     try {
       setLoading(true);
       const res = await postUserApi(user, API_CREATE_USER);
-      storeToken(res.token);
-      return navigate(ROUTE_MY_PROFILE);
+      if (res.success) {
+        storeToken(res.token);
+        return navigate(ROUTE_MY_PROFILE);
+      } else {
+        setError(res);
+      }
     } catch (error) {
       console.error(error.message);
     } finally {
@@ -58,6 +61,7 @@ const useSignup = () => {
     onReset,
     loading,
     onLink,
+    error,
   };
 };
 

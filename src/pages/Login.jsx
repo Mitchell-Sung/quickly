@@ -1,3 +1,4 @@
+import Alert from '@mui/material/Alert';
 import { Loading } from 'components';
 import ContainButton from 'components/ContainButton';
 import InputField from 'components/InputField';
@@ -16,6 +17,7 @@ const Login = () => {
     onReset,
     loading,
     onLink,
+    error,
   } = useLogin();
 
   if (loading) return <Loading />;
@@ -48,6 +50,7 @@ const Login = () => {
           />
           <ContainButton label='RESET' onClick={onReset} />
         </section>
+        {!error.success && <Alert severity='error'>{error.message}</Alert>}
       </div>
     </main>
   );

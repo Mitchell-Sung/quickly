@@ -2,6 +2,7 @@ import useSignup from 'hooks/useSignup';
 import { signupData } from 'data/signupData';
 import { ContainButton, InputField, TextButton, Loading } from 'components';
 import styles from 'styles/index.module.css';
+import Alert from '@mui/material/Alert';
 
 const Signup = () => {
   const {
@@ -13,6 +14,7 @@ const Signup = () => {
     onReset,
     loading,
     onLink,
+    error,
   } = useSignup();
 
   if (loading) return <Loading />;
@@ -45,6 +47,7 @@ const Signup = () => {
           />
           <ContainButton label='RESET' onClick={onReset} />
         </section>
+        {!error.success && <Alert severity='error'>{error.message}</Alert>}
       </div>
     </main>
   );
