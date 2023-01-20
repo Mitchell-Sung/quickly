@@ -22,6 +22,7 @@ const useMyProfile = () => {
           return navigate(ROUTE_LOGIN);
         }
       } catch (error) {
+        return navigate(ROUTE_LOGIN);
       } finally {
         setLoading(false);
       }

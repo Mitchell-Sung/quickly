@@ -10,12 +10,12 @@ const getUserApi = async (token) => {
   };
 
   const res = await fetch(API_GET_USER, options);
-  const data = await res.json();
 
-  if (!data.success) {
-    throw new Error(data.message);
-  } else {
+  if (res.ok) {
+    const data = await res.json();
     return data;
+  } else {
+    throw Error(res.statusText);
   }
 };
 
